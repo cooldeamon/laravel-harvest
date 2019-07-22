@@ -1,5 +1,5 @@
 {
-    "name": "byte5digital/laravel-harvest",
+    "name": "crazycodr/laravel-harvest",
     "description": "A Laravel wrapper for the Harvest API.",
     "type": "package",
     "license": "MIT",
@@ -10,8 +10,15 @@
     ],
     "authors": [
         {
+            "name": "Mathieu Dumoulin",
+            "email": "thecrazycodr@gmail.com",
+            "homepage": "https://www.thecrazycodr.com",
+            "role": "developer"
+        },
+        {
             "name": "Krishan König",
-            "email": "kkoenig@byte5.de"
+            "email": "kkoenig@byte5.de",
+            "role": "ex-developer"
         }
     ],
     "require": {
