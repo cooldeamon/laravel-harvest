@@ -18,6 +18,9 @@
         "illuminate/support": "^5.6",
         "kitetail/zttp": "^0.3.0"
     },
+    "require-dev": {
+        "orchestra/testbench": "^3.6"
+    },
     "autoload": {
         "psr-4": {
             "Byte5\\LaravelHarvest\\": "./src"
@@ -40,8 +43,5 @@
                 "Harvest": "Byte5\\LaravelHarvest\\Harvest"
             }
         }
-    },
-    "require-dev": {
-        "orchestra/testbench": "^3.6"
     }
 }
