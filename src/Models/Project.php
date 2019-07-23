@@ -86,7 +86,7 @@ class Project extends Model
      */
     public function timeEntries()
     {
-        return $this->hasMany(TimeEntry::class, 'external_id', 'project_id');
+        return $this->hasMany(TimeEntry::class);
     }
 
     /**
