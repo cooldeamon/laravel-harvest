@@ -7,7 +7,7 @@ abstract class BaseEndpoint
     /**
      * @var string
      */
-    protected $apiV2Url = 'https://api.harvestapp.com/v2/';
+    protected $apiV2Url = '//api.harvestapp.com/v2/';
 
     /**
      * @var
@@ -18,6 +18,8 @@ abstract class BaseEndpoint
      * @var array
      */
     protected $params = [];
+    
+    protected $patchdata;
 
     /**
      * @var
@@ -42,6 +44,22 @@ abstract class BaseEndpoint
         $this->buildUrl();
 
         return $this->getUrl();
+    }
+
+    public function post($patchdata)
+    {
+        
+        $this->buildUrl();
+        return $this->getUrl($patchdata);
+
+    }
+
+    public function patch($id, $patchdata)
+    {
+         
+        $this->buildUrl('/'.$id);
+        return $this->getUrl($patchdata);
+
     }
 
     /**
@@ -73,9 +91,10 @@ abstract class BaseEndpoint
      *
      * @return mixed
      */
-    public function getUrl()
+    public function getUrl($data = null)
     {
-        return $this->url;
+
+        return array('url' => $this->url, 'patchdata' => $data);
     }
 
     /**
@@ -100,6 +119,11 @@ abstract class BaseEndpoint
     public function page($page)
     {
         $this->params += ['page' => $page];
+    }
+
+    public function patchdata($data)
+    {
+        return $data;
     }
 
     /**

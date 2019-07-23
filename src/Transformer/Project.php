@@ -14,34 +14,32 @@ class Project implements Transformer
     public function transformModelAttributes($data)
     {
         $project = new ProjectModel;
+   
 
-        if (config('harvest.uses_database')) {
-            $project = $project->firstOrNew(['external_id' => $data['id']]);
-        }
 
-        $project->external_id = $data['id'];
-        $project->name = $data['name'];
-        $project->code = $data['code'];
-        $project->is_active = $data['is_active'];
-        $project->is_billable = $data['is_billable'];
-        $project->is_fixed_fee = $data['is_fixed_fee'];
-        $project->bill_by = $data['bill_by'];
-        $project->hourly_rate = $data['hourly_rate'];
-        $project->budget = $data['budget'];
-        $project->budget_by = $data['budget_by'];
-        $project->notify_when_over_budget = $data['notify_when_over_budget'];
-        $project->over_budget_notification_percentage = $data['over_budget_notification_percentage'];
-        $project->show_budget_to_all = $data['show_budget_to_all'];
-        $project->cost_budget = $data['cost_budget'];
-        $project->cost_budget_include_expenses = $data['cost_budget_include_expenses'];
-        $project->fee = $data['fee'];
-        $project->notes = $data['notes'];
-        $project->starts_on = $data['starts_on'];
-        $project->ends_on = $data['ends_on'];
-        $project->over_budget_notification_date = $data['over_budget_notification_date'];
+        $proj['external_id'] =  $data['id'];
+        $proj['name'] =  $data['name'];
+        $proj['code'] =  $data['code'];
+        $proj['is_active'] =  $data['is_active'];
+        $proj['is_billable'] =  $data['is_billable'];
+        $proj['is_fixed_fee'] =  $data['is_fixed_fee'];
+        $proj['bill_by'] =  $data['bill_by'];
+        $proj['hourly_rate'] =  $data['hourly_rate'];
+        $proj['budget'] =  $data['budget'];
+        $proj['budget_by'] =  $data['budget_by'];
+        $proj['notify_when_over_budget'] =  $data['notify_when_over_budget'];
+        $proj['over_budget_notification_percentage'] =  $data['over_budget_notification_percentage'];
+        $proj['show_budget_to_all'] =  $data['show_budget_to_all'];
+        $proj['cost_budget'] =  $data['cost_budget'];
+        $proj['cost_budget_include_expenses'] =  $data['cost_budget_include_expenses'];
+        $proj['fee'] =  $data['fee'];
+        $proj['notes'] =  $data['notes'];
+        $proj['starts_on'] =  $data['starts_on'];
+        $proj['ends_on'] =  $data['ends_on'];
+        $proj['over_budget_notification_date'] =  $data['over_budget_notification_date'];
 
-        $project->external_client_id = array_get($data, 'client.id');
-
+        $proj['client_id'] = array_get($data, 'client.id');
+        $project->updateOrCreate(['external_id' => $data['id']],$proj);
         return $project;
     }
 }

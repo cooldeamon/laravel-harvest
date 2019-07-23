@@ -26,7 +26,7 @@ class TimeEntry extends Model
      * @var array
      */
     protected $dates = [
-        'created_at', 'updated_at', 'spent_date', 'timer_started_at',
+        'created_at', 'updated_at', 'timer_started_at',
     ];
 
     /**
@@ -74,7 +74,7 @@ class TimeEntry extends Model
      */
     public function client()
     {
-        return $this->belongsTo(Client::class, 'client_id', 'external_id');
+        return $this->belongsTo(Client::class);
     }
 
     /**

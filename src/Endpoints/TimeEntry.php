@@ -15,14 +15,6 @@ class TimeEntry extends BaseEndpoint
     }
 
     /**
-     * @param $id
-     */
-    public function client($id)
-    {
-        $this->params += ['client_id' => $id];
-    }
-
-    /**
      * @return mixed
      */
     public function getModel()
@@ -30,6 +22,10 @@ class TimeEntry extends BaseEndpoint
         return \Byte5\LaravelHarvest\Models\TimeEntry::class;
     }
 
+    public function project($id)
+    {
+        $this->params += ['project_id' => $id];
+    }
     /**
      * @param $dateTime
      */
@@ -38,7 +34,12 @@ class TimeEntry extends BaseEndpoint
         if (! $dateTime instanceof Carbon) {
             $dateTime = Carbon::parse($dateTime);
         }
-
         $this->params += ['updated_since' => $dateTime->toIso8601ZuluString()];
     }
+
+    public function fromClient($clientid)
+    {
+        $this->params += ['client_id' => $clientid];
+    }
+
 }

@@ -41,4 +41,10 @@ class Project extends BaseEndpoint
 
         $this->params += ['updated_since' => $dateTime->toIso8601ZuluString()];
     }
+
+    public function fromClient($clientid)
+    {
+        $this->params += ['client_id' => $clientid];
+    }
+    
 }

@@ -105,6 +105,11 @@ class ApiResponse
         );
     }
 
+    public function numberNextPage()
+    {
+        return array_get($this->jsonResult, 'total_pages');
+    }
+
     public function hasNextPage()
     {
         return array_get($this->jsonResult, 'links.next') != null;

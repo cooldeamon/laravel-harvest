@@ -46,6 +46,6 @@ class Task extends Model
      */
     public function timeEntries()
     {
-        return $this->hasMany(TimeEntry::class);
+        return $this->hasMany(TimeEntry::class, 'task_id');
     }
 }

@@ -15,14 +15,10 @@ class Role implements Transformer
     {
         $role = new RoleModel;
 
-        if (config('harvest.uses_database')) {
-            $role = $role->firstOrNew(['external_id' => $data['id']]);
-        }
-
         $role->external_id = $data['id'];
         $role->name = $data['name'];
         $role->user_ids = $data['user_ids'];
-
+        $role = $role->updateOrCreate(['external_id' => $data['id']],$data);
         return $role;
     }
 }

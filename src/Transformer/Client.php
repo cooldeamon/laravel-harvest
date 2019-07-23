@@ -15,16 +15,13 @@ class Client implements TransformerContract
     {
         $client = new ClientModel;
 
-        if (config('harvest.uses_database')) {
-            $client = $client->firstOrNew(['external_id' => $data['id']]);
-        }
 
-        $client->external_id = $data['id'];
-        $client->currency = $data['currency'];
-        $client->name = $data['name'];
-        $client->is_active = $data['is_active'];
-        $client->address = $data['address'];
-
+        $clients['external_id'] = $data['id'];
+        $clients['currency'] = $data['currency'];
+        $clients['name'] = $data['name'];
+        $clients['is_active'] = $data['is_active'];
+        $clients['address'] = $data['address'];
+        $client = $client->updateOrCreate(['external_id' => $data['id']],$clients);
         return $client;
     }
 }

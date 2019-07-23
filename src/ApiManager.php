@@ -53,6 +53,8 @@ class ApiManager
      */
     public function __call($name, $arguments)
     {
+        
+
         $apiCall = null;
 
         if ($this->isStaticCall() && ! $this->endpoint) {
@@ -71,7 +73,7 @@ class ApiManager
             return $this;
         }
 
-        return tap($this->craftResponse($url), function () {
+        return tap($this->craftResponse($url['url'], $name, $url['patchdata']), function () {
             $this->clearEndpoint();
         });
     }
@@ -90,9 +92,9 @@ class ApiManager
      * @param $url
      * @return ApiResponse
      */
-    protected function craftResponse($url)
+    protected function craftResponse($url, $name, $patchdata)
     {
-        return new ApiResponse($this->gateway->execute($url), $this->endpoint->getModel());
+        return new ApiResponse($this->gateway->execute($url, $name, $patchdata), $this->endpoint->getModel());
     }
 
     /**

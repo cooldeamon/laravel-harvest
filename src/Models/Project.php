@@ -25,7 +25,7 @@ class Project extends Model
      * @var array
      */
     protected $dates = [
-        'created_at', 'updated_at', 'over_budget_notification_date', 'starts_on', 'ends_on',
+        'created_at', 'updated_at', 'over_budget_notification_date',
     ];
 
     /**
@@ -36,7 +36,7 @@ class Project extends Model
         'is_fixed_fee', 'bill_by', 'hourly_rate', 'budget', 'budget_by',
         'notify_when_over_budget', 'over_budget_notification_percentage',
         'show_budget_to_all', 'cost_budget', 'cost_budget_include_expenses',
-        'fee', 'notes', 'starts_on', 'ends_on', 'over_budget_notification_date',
+        'fee', 'notes', 'starts_on', 'ends_on', 'over_budget_notification_date', 'is_active_app', 'app_ended_time', 'app_started_time', 'app_hourly_rate', 'first_notif', 'first_notif_client', 'second_notif', 'second_notif_client'
     ];
 
     /**
@@ -68,6 +68,11 @@ class Project extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -81,7 +86,7 @@ class Project extends Model
      */
     public function timeEntries()
     {
-        return $this->hasMany(TimeEntry::class);
+        return $this->hasMany(TimeEntry::class, 'external_id', 'project_id');
     }
 
     /**
