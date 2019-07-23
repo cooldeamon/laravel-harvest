@@ -40,13 +40,13 @@ class LaravelHarvestServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        //$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->publishes([
             __DIR__.'/../config/harvest.php' => config_path('harvest.php'),
         ], 'config');
 
-        $this->publishMigrations();
+        //$this->publishMigrations();
     }
 
     /**
