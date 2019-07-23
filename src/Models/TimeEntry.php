@@ -74,7 +74,7 @@ class TimeEntry extends Model
      */
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id', 'external_id');
     }
 
     /**
@@ -90,7 +90,7 @@ class TimeEntry extends Model
      */
     public function project()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class, 'project_id', 'external_id');
     }
 
     /**
@@ -98,7 +98,7 @@ class TimeEntry extends Model
      */
     public function task()
     {
-        return $this->belongsTo(Task::class);
+        return $this->belongsTo(Task::class, 'task_id', 'external_id');
     }
 
     /**
@@ -114,7 +114,7 @@ class TimeEntry extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'external_id');
     }
 
     /**

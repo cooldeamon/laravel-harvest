@@ -3,6 +3,7 @@
 namespace Byte5\LaravelHarvest\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Client extends Model
 {
@@ -19,7 +20,7 @@ class Client extends Model
     protected $dates = ['created_at', 'updated_at'];
 
     /**
-     * @var array
+     * @var array's project.
      */
     protected $fillable = [
         'external_id', 'currency', 'name', 'is_active', 'address',
@@ -72,6 +73,15 @@ class Client extends Model
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    /**
+     * Get user linked to this project
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class, 'client_id', 'external_id');
     }
 
     /**
