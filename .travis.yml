@@ -10,6 +10,3 @@ before_install:
 
 install:
   - travis_retry composer update --prefer-source
-
-#script:
-#  - phpunit

@@ -38,9 +38,6 @@
             "Byte5\\LaravelHarvest\\Test\\": "tests"
         }
     },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    },
     "extra": {
         "laravel": {
             "providers": [
