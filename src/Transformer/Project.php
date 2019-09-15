@@ -37,7 +37,7 @@ class Project implements Transformer
         $proj['starts_on'] =  $data['starts_on'];
         $proj['ends_on'] =  $data['ends_on'];
         $proj['over_budget_notification_date'] =  $data['over_budget_notification_date'];
-
+        $proj['external_client_id']= array_get($data, 'client.id');
         $proj['client_id'] = array_get($data, 'client.id');
         $project->updateOrCreate(['external_id' => $data['id']],$proj);
         return $project;
